@@ -388,7 +388,7 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
     <label class="field"><span><span lang="es">Nombre</span><span lang="en">Name</span> *</span><input name="nombre" id="exName" autocomplete="name" required autofocus></label>
     <label class="field"><span><span lang="es">Empresa o proyecto</span><span lang="en">Company or project</span> <small><span lang="es">(opcional)</span><span lang="en">(optional)</span></small></span><input name="empresa" id="exCo" autocomplete="organization"></label>
     <label class="field"><span><span lang="es">WhatsApp o email</span><span lang="en">WhatsApp or email</span> *</span><input name="contacto" id="exContact" autocomplete="tel" required inputmode="email"></label>
-    <label class="field"><span><span lang="es">¿Dónde nos conocimos?</span><span lang="en">Where did we meet?</span> <small><span lang="es">(opcional)</span><span lang="en">(optional)</span></small></span><input name="evento" id="exEvent"></label>
+    <label class="field"><span><span lang="es">¿Dónde nos conocimos?</span><span lang="en">Where did we meet?</span> <small><span lang="es">(opcional)</span><span lang="en">(optional)</span></small></span><input name="evento" id="exEvent" data-ph-es="Ej.: un evento de networking en Atlanta" data-ph-en="e.g. a networking event in Atlanta"></label>
     <p class="err" id="exErr" role="alert"></p>
     <button class="btn btn-wa" type="submit"><span lang="es">Enviar mis datos</span><span lang="en">Send my details</span><svg class="i"><use href="#i-up-right"/></svg></button>
     <p class="fine"><span lang="es">Solo los uso para darte seguimiento. Nada de listas de correo.</span><span lang="en">Only used to follow up with you. No mailing lists.</span></p>
@@ -456,6 +456,7 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
     document.querySelectorAll("[data-set-lang]").forEach(function(b){b.setAttribute("aria-pressed", b.dataset.setLang===lang)});
     document.querySelectorAll("[data-wa]").forEach(function(a){a.href="https://wa.me/"+PHONE+"?text="+encodeURIComponent(WA_MSG[lang])});
     document.getElementById("exLang").value = lang;
+    document.querySelectorAll("[data-ph-es]").forEach(function(el){el.placeholder=el.getAttribute("data-ph-"+lang)});
     store("gg-lang", lang);
   }
   var q = new URLSearchParams(location.search).get("lang");
