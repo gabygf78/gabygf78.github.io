@@ -378,16 +378,14 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
 
 <!-- ===================== EXCHANGE SHEET ===================== -->
 <dialog id="exchangeDlg" aria-labelledby="exTitle">
-  <form class="sheet" name="networking" method="POST" data-netlify="true" netlify-honeypot="empresa-web" id="exForm" novalidate>
-    <input type="hidden" name="form-name" value="networking">
+  <form class="sheet" id="exForm" novalidate>
     <input type="hidden" name="idioma" id="exLang" value="es">
-    <p class="hp"><label>No llenar: <input name="empresa-web" tabindex="-1" autocomplete="off"></label></p>
     <div class="sheet-top">
       <h3 id="exTitle"><span lang="es">Sigamos en contacto.</span><span lang="en">Let’s stay in touch.</span></h3>
       <button type="button" class="close" data-close aria-label="Cerrar"><svg class="i"><use href="#i-x"/></svg></button>
     </div>
     <p class="sub"><span lang="es">Déjame tus datos y te escribo. Me llegan directo por WhatsApp.</span><span lang="en">Leave your details and I’ll reach out. They come straight to my WhatsApp.</span></p>
-    <label class="field"><span><span lang="es">Nombre</span><span lang="en">Name</span> *</span><input name="nombre" id="exName" autocomplete="name" required></label>
+    <label class="field"><span><span lang="es">Nombre</span><span lang="en">Name</span> *</span><input name="nombre" id="exName" autocomplete="name" required autofocus></label>
     <label class="field"><span><span lang="es">Empresa o proyecto</span><span lang="en">Company or project</span> <small><span lang="es">(opcional)</span><span lang="en">(optional)</span></small></span><input name="empresa" id="exCo" autocomplete="organization"></label>
     <label class="field"><span><span lang="es">WhatsApp o email</span><span lang="en">WhatsApp or email</span> *</span><input name="contacto" id="exContact" autocomplete="tel" required inputmode="email"></label>
     <label class="field"><span><span lang="es">¿Dónde nos conocimos?</span><span lang="en">Where did we meet?</span> <small><span lang="es">(opcional)</span><span lang="en">(optional)</span></small></span><input name="evento" id="exEvent"></label>
@@ -534,7 +532,7 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
     if(navigator.share){navigator.share(data).catch(function(){})} else {document.getElementById("copyBtn").click()}
   });
 
-  /* ---------- Exchange form → WhatsApp (+ Netlify Forms record) ---------- */
+  /* ---------- Exchange form → WhatsApp ---------- */
   var form=document.getElementById("exForm");
   form.addEventListener("submit",function(e){
     e.preventDefault();
@@ -545,9 +543,6 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
         err=document.getElementById("exErr");
     if(!name||!ct){err.textContent=lang==="es"?"Escribe tu nombre y un WhatsApp o email.":"Please add your name and a WhatsApp or email.";return}
     err.textContent="";
-    try{
-      fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(form)).toString()}).catch(function(){});
-    }catch(x){}
     var msg = lang==="es"
       ? "Hola Gaby, soy "+name+(co?" de "+co:"")+"."+(ev?" Nos conocimos en "+ev+".":"")+" Mi contacto: "+ct+". ¡Sigamos conversando!"
       : "Hi Gaby, I’m "+name+(co?" from "+co:"")+"."+(ev?" We met at "+ev+".":"")+" My contact: "+ct+". Let’s keep talking!";
