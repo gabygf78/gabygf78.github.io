@@ -433,7 +433,7 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
       <h3>${bi(s.name[0],s.name[1])}</h3>
       <div><p class="label">${bi("PARA QUIÉN","WHO IT’S FOR")}</p><p>${bi(s.forwho[0],s.forwho[1])}</p></div>
       <div><p class="label">${bi("QUÉ INCLUYE","WHAT’S INCLUDED")}</p><ul>${s.incl.map(x=>`<li>${bi(x[0],x[1])}</li>`).join("")}</ul></div>
-      <div><p class="label">${bi("INVERSIÓN","INVESTMENT")}</p><p>${bi("Se define en una primera conversación, según el alcance.","Defined in a first conversation, based on scope.")}</p></div>
+      <div><p class="label">${bi("INVERSIÓN","INVESTMENT")}</p><p>${bi("Se define al tener la información necesaria sobre tus necesidades, según el alcance.","Defined once I have the information I need about your needs, based on scope.")}</p></div>
       <a class="btn btn-dark" data-svc="${s.id}" target="_blank" rel="noopener">${bi("Conversemos sobre esto","Let’s talk about this")}<svg class="i"><use href="#i-up-right"/></svg></a>
     </article>`).join("");
   const step=(lbl,txt,out)=>`<div class="step${out?" out":""}"><b>${lbl}</b><span>${txt}</span></div>`;
