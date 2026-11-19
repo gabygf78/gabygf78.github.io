@@ -140,6 +140,10 @@ h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;lett
 .case:nth-child(2){border-top-color:var(--teal)}
 .case:nth-child(3){border-top-color:var(--purple)}
 .case:nth-child(4){border-top-color:var(--lime)}
+.case .step b{color:#d81b6a}
+.case:nth-child(2) .step b{color:#00897b}
+.case:nth-child(3) .step b{color:var(--purple)}
+.case:nth-child(4) .step b{color:#5f7a00}
 .case .tag{display:inline-block;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--tint);border:1px solid var(--line);margin-bottom:10px}
 .case h3{margin-bottom:12px}
 .step{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
@@ -204,7 +208,7 @@ h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;lett
 .wm-svcs div:nth-child(even){border-left-color:#E20E41}
 .wm-svcs b{display:block;font-size:15px}
 .wm-svcs div > span{display:block;font-size:14px;color:var(--muted)}
-.wmdlg .step b{color:#158C67}
+.wmdlg .case .step b{color:#158C67!important}
 .cases.one{grid-template-columns:1fr!important;margin-top:0}
 .wm-cta{display:grid;gap:8px;margin-top:20px}
 @media(min-width:520px){.wm-cta{grid-template-columns:1fr 1fr}}
