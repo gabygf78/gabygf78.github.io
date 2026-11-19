@@ -188,6 +188,28 @@ h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;lett
 .arrow{display:flex;align-items:center;justify-content:center;color:var(--pink)}
 .arrow svg.i{width:30px;height:30px}
 @media(max-width:759px){.arrow svg.i{transform:rotate(90deg)}}
+.wm-logo{border:0;cursor:pointer;width:100%;text-align:left}
+.wm-open{margin-top:16px;background:#fff;color:#158C67;width:100%;max-width:320px}
+.wmdlg{max-width:640px;max-height:92vh;overflow:auto;padding:0}
+.wm-head{position:sticky;top:0;z-index:2;background:#158C67;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.wm-head img{height:30px;width:auto;background:#fff;border-radius:10px;padding:7px 12px}
+.wm-head .close{background:#fff;border-color:#fff}
+.wm-body{padding:22px 20px calc(26px + env(safe-area-inset-bottom))}
+.wm-body .kicker{color:#158C67}
+.wm-body h3{font-size:30px;line-height:1.08;letter-spacing:-.025em;margin:6px 0 10px}
+.wm-body .sub{color:var(--muted);font-size:15.5px}
+.wm-sec{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin:24px 0 10px}
+.wm-svcs{display:grid;gap:8px}
+.wm-svcs div{border:1px solid var(--line);border-left:4px solid #158C67;border-radius:0 14px 14px 0;padding:11px 14px}
+.wm-svcs div:nth-child(even){border-left-color:#E20E41}
+.wm-svcs b{display:block;font-size:15px}
+.wm-svcs div > span{display:block;font-size:14px;color:var(--muted)}
+.wmdlg .step b{color:#158C67}
+.cases.one{grid-template-columns:1fr!important;margin-top:0}
+.wm-cta{display:grid;gap:8px;margin-top:20px}
+@media(min-width:520px){.wm-cta{grid-template-columns:1fr 1fr}}
+.wm-cta .btn{justify-content:center;gap:10px}
+.wm-wa{background:#158C67;color:#fff}
 .wm-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .wm-chips span{font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);color:#fff}
 .converge{margin-top:18px;font-family:var(--serif);font-size:clamp(20px,4.6vw,24px);line-height:1.3;text-align:center;max-width:46ch;margin-left:auto;margin-right:auto}
@@ -342,12 +364,11 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
       </div>
       <div class="arrow" aria-hidden="true"><svg class="i"><use href="#i-right"/></svg></div>
       <div class="rung wm">
-        <span class="wm-logo"><img src="../img/watermelon-logo.png" alt="Watermelon" width="1200" height="150"></span>
+        <button class="wm-logo" data-open-wm aria-label="Conoce Watermelon"><img src="../img/watermelon-logo.png" alt="Watermelon" width="1200" height="150"></button>
         <p class="label">WATERMELON GROUP, LLC</p>
         <h3><span lang="es">Ejecución estratégica</span><span lang="en">Strategic execution</span></h3>
         <p><span lang="es">Mi agencia de marketing, comunicación y consultoría estratégica convierte esa claridad en marca visible: websites, branding e identidad visual, y diseño de piezas comerciales. Cada entregable nace de la estrategia, no de una plantilla.</span><span lang="en">My marketing, communications and strategic consulting agency turns that clarity into a visible brand: websites, branding and visual identity, and design of commercial pieces. Every deliverable is born from strategy, not from a template.</span></p>
-        <div class="wm-chips"><span>Websites</span><span>Branding</span><span lang="es">Identidad visual</span><span lang="en">Visual identity</span><span lang="es">Piezas gráficas</span><span lang="en">Graphic pieces</span><span lang="es">Contenido y campañas</span><span lang="en">Content &amp; campaigns</span></div>
-        <a class="wm-link" href="https://www.instagram.com/hola_watermelon/" target="_blank" rel="noopener">@hola_watermelon <svg class="i"><use href="#i-up-right"/></svg></a>
+        <button class="btn wm-open" data-open-wm><span lang="es">Conoce Watermelon</span><span lang="en">Discover Watermelon</span><svg class="i"><use href="#i-right"/></svg></button>
       </div>
     </div>
     <p class="converge"><span lang="es">Una sola visión: lo que definimos en la estrategia es lo que Watermelon diseña y construye.</span><span lang="en">One vision: what we define in strategy is what Watermelon designs and builds.</span></p>
@@ -389,6 +410,34 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
     <button class="btn btn-wa" type="submit"><span lang="es">Enviar mis datos</span><span lang="en">Send my details</span><svg class="i"><use href="#i-up-right"/></svg></button>
     <p class="fine"><span lang="es">Solo los uso para darte seguimiento. Nada de listas de correo.</span><span lang="en">Only used to follow up with you. No mailing lists.</span></p>
   </form>
+</dialog>
+
+<!-- WATERMELON -->
+<dialog id="wmDlg" class="wmdlg" aria-labelledby="wmTitle">
+  <div class="wm-head">
+    <img src="../img/watermelon-logo.png" alt="Watermelon" width="1200" height="150">
+    <button type="button" class="close" data-close aria-label="Cerrar"><svg class="i"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="wm-body">
+    <p class="kicker">WATERMELON GROUP, LLC</p>
+    <h3 id="wmTitle"><span lang="es">La estrategia, convertida en marca visible.</span><span lang="en">Strategy, turned into a visible brand.</span></h3>
+    <p class="sub"><span lang="es">Agencia de marketing, comunicación y consultoría estratégica. Diseñamos y construimos lo que tu negocio necesita para comunicar con claridad, y cada entregable nace de la estrategia, no de una plantilla.</span><span lang="en">Marketing, communications and strategic consulting agency. We design and build what your business needs to communicate clearly, and every deliverable is born from strategy, not from a template.</span></p>
+    <p class="wm-sec"><span lang="es">Lo que hacemos</span><span lang="en">What we do</span></p>
+    <div class="wm-svcs">
+      <div><b>Websites</b><span><span lang="es">Sitios bilingües, claros y pensados para convertir visitas en clientes.</span><span lang="en">Clear, bilingual sites built to turn visits into clients.</span></span></div>
+      <div><b>Branding</b><span><span lang="es">Propósito, posicionamiento y voz de marca.</span><span lang="en">Purpose, positioning and brand voice.</span></span></div>
+      <div><b><span lang="es">Identidad visual</span><span lang="en">Visual identity</span></b><span><span lang="es">Logo, paleta, tipografía y sistema visual.</span><span lang="en">Logo, palette, typography and visual system.</span></span></div>
+      <div><b><span lang="es">Piezas gráficas</span><span lang="en">Graphic pieces</span></b><span><span lang="es">Flyers, presentaciones y materiales comerciales con estrategia.</span><span lang="en">Flyers, presentations and sales materials with strategy behind them.</span></span></div>
+      <div><b><span lang="es">Contenido y campañas</span><span lang="en">Content &amp; campaigns</span></b><span><span lang="es">Contenido para redes y campañas que conectan y convierten.</span><span lang="en">Social content and campaigns that connect and convert.</span></span></div>
+    </div>
+    <p class="wm-sec"><span lang="es">Proyectos</span><span lang="en">Projects</span></p>
+    <div class="cases one" id="wmCases"></div>
+    <div class="wm-cta">
+      <a class="btn wm-wa" id="wmWa" target="_blank" rel="noopener">WhatsApp<svg class="i"><use href="#i-up-right"/></svg></a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/hola_watermelon/" target="_blank" rel="noopener">@hola_watermelon<svg class="i"><use href="#i-up-right"/></svg></a>
+    </div>
+    <p class="fine">hola.watermelonteam@gmail.com</p>
+  </div>
 </dialog>
 
 <!-- QR -->
@@ -479,12 +528,14 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
       <a class="btn btn-dark" data-svc="${s.id}" target="_blank" rel="noopener">${bi("Conversemos sobre esto","Let’s talk about this")}<svg class="i"><use href="#i-up-right"/></svg></a>
     </article>`).join("");
   const step=(lbl,txt,out)=>`<div class="step${out?" out":""}"><b>${lbl}</b><span>${txt}</span></div>`;
-  document.getElementById("cases").innerHTML=CASES.map(c=>`
+  const caseHTML=c=>`
     <article class="case${c.wm?" wmcase":""}"><span class="tag">${bi(c.tag[0],c.tag[1])}</span><h3>${esc(c.name)}</h3>
       ${step(bi("Reto","Challenge"),bi(c.r[0],c.r[1]))}
       ${step(c.wm?bi("Lo que hicimos","What we did"):bi("Lo que hice","What I did"),bi(c.h[0],c.h[1]))}
       ${step(bi("Lo que cambió","What changed"),bi(c.c[0],c.c[1]),true)}
-    </article>`).join("");
+    </article>`;
+  document.getElementById("cases").innerHTML=CASES.filter(c=>!c.wm).map(caseHTML).join("");
+  document.getElementById("wmCases").innerHTML=CASES.filter(c=>c.wm).map(caseHTML).join("");
   document.getElementById("caps").innerHTML=CAPS.map(c=>`<div class="cap"><h4>${bi(c.t[0],c.t[1])}</h4><ul>${c.i.map(x=>`<li>${bi(x[0],x[1])}</li>`).join("")}</ul></div>`).join("");
   document.getElementById("method").innerHTML=METHOD.map(m=>`<div class="m"><p class="n">${m[0]}</p><h3>${bi(m[1],m[2])}</h3><p>${bi(m[3],m[4])}</p></div>`).join("");
 
@@ -579,6 +630,10 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
   const exDlg=document.getElementById("exchangeDlg"), qrDlg=document.getElementById("qrDlg");
   document.querySelectorAll("[data-open-exchange]").forEach(b=>b.addEventListener("click",()=>openDlg(exDlg)));
   document.getElementById("qrBtn").addEventListener("click",()=>openDlg(qrDlg));
+  const wmDlg=document.getElementById("wmDlg");
+  document.querySelectorAll("[data-open-wm]").forEach(b=>b.addEventListener("click",()=>{openDlg(wmDlg);wmDlg.scrollTop=0}));
+  const setWm=()=>{document.getElementById("wmWa").href=wa(lang==="es"?"Hola, me interesa conocer los servicios de Watermelon.":"Hi, I’d like to learn more about Watermelon’s services.")};
+  setWm(); onLang.push(setWm);
   const toastEl=document.getElementById("toast"); let tt;
   const toast=m=>{toastEl.textContent=m;toastEl.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove("on"),2600)};
   document.getElementById("copyBtn").addEventListener("click",()=>{
