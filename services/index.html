@@ -146,8 +146,8 @@ h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;lett
 .step b{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--purple);padding-top:2px}
 .step > span{color:var(--muted)}
 .step.out > span{color:var(--ink);font-weight:600}
-.case.approach{background:var(--tint)}
-.case.approach .tag{background:var(--lime);border-color:var(--lime)}
+.case.wmcase{border-top-color:#158C67!important}
+.case.wmcase .tag{background:#158C67;border-color:#158C67;color:#fff}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .chip{border:1.5px solid var(--teal);border-radius:999px;padding:7px 13px;font-size:14px;font-weight:700}
 .caps{margin-top:26px}
@@ -188,6 +188,9 @@ h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;lett
 .arrow{display:flex;align-items:center;justify-content:center;color:var(--pink)}
 .arrow svg.i{width:30px;height:30px}
 @media(max-width:759px){.arrow svg.i{transform:rotate(90deg)}}
+.wm-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.wm-chips span{font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);color:#fff}
+.converge{margin-top:18px;font-family:var(--serif);font-size:clamp(20px,4.6vw,24px);line-height:1.3;text-align:center;max-width:46ch;margin-left:auto;margin-right:auto}
 .wm-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-weight:800;color:#fff;border-bottom:1.5px solid rgba(255,255,255,.4)}
 
 /* Contact */
@@ -335,17 +338,19 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
       <div class="rung me">
         <p class="label">GABY GONZALEZ</p>
         <h3><span lang="es">Estrategia y claridad</span><span lang="en">Strategy and clarity</span></h3>
-        <p><span lang="es">Diagnóstico, posicionamiento, oferta y experiencia. Te acompaño a decidir qué cambiar y por qué.</span><span lang="en">Diagnostic, positioning, offer and experience. I help you decide what to change and why.</span></p>
+        <p><span lang="es">Diagnóstico, posicionamiento, oferta y experiencia. Defino contigo qué cambiar, por qué y por dónde empezar.</span><span lang="en">Diagnostic, positioning, offer and experience. I define with you what to change, why and where to start.</span></p>
       </div>
       <div class="arrow" aria-hidden="true"><svg class="i"><use href="#i-right"/></svg></div>
       <div class="rung wm">
         <span class="wm-logo"><img src="../img/watermelon-logo.png" alt="Watermelon" width="1200" height="150"></span>
         <p class="label">WATERMELON GROUP, LLC</p>
-        <h3><span lang="es">Ejecución e implementación</span><span lang="en">Execution and implementation</span></h3>
-        <p><span lang="es">Mi agencia de marketing, comunicación y consultoría estratégica. El equipo que convierte la estrategia en contenido, campañas y piezas listas para el mercado.</span><span lang="en">My marketing, communications and strategic consulting agency. The team that turns strategy into content, campaigns and market-ready assets.</span></p>
+        <h3><span lang="es">Ejecución estratégica</span><span lang="en">Strategic execution</span></h3>
+        <p><span lang="es">Mi agencia de marketing, comunicación y consultoría estratégica convierte esa claridad en marca visible: websites, branding e identidad visual, y diseño de piezas comerciales. Cada entregable nace de la estrategia, no de una plantilla.</span><span lang="en">My marketing, communications and strategic consulting agency turns that clarity into a visible brand: websites, branding and visual identity, and design of commercial pieces. Every deliverable is born from strategy, not from a template.</span></p>
+        <div class="wm-chips"><span>Websites</span><span>Branding</span><span lang="es">Identidad visual</span><span lang="en">Visual identity</span><span lang="es">Piezas gráficas</span><span lang="en">Graphic pieces</span><span lang="es">Contenido y campañas</span><span lang="en">Content &amp; campaigns</span></div>
         <a class="wm-link" href="https://www.instagram.com/hola_watermelon/" target="_blank" rel="noopener">@hola_watermelon <svg class="i"><use href="#i-up-right"/></svg></a>
       </div>
     </div>
+    <p class="converge"><span lang="es">Una sola visión: lo que definimos en la estrategia es lo que Watermelon diseña y construye.</span><span lang="en">One vision: what we define in strategy is what Watermelon designs and builds.</span></p>
   </section>
 
   <!-- CONTACT -->
@@ -436,18 +441,23 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
      r:["Una mermelada artesanal sin azúcar que competía como “una opción saludable más”.","An artisanal sugar-free jam competing as “just another healthy option”."],
      h:["Construí la marca desde la emoción: Golden Circle, arquetipo, manual de los 5 sentidos, voz verbal, empaque artesanal y extensión de línea.","I built the brand from emotion: Golden Circle, archetype, five-senses manual, verbal voice, artisanal packaging and line extension."],
      c:["El producto no cambió; la experiencia sí, y se convirtió en un recuerdo que alguien elige llevar a casa.","The product didn’t change; the experience did, and it became a memory someone chooses to take home."]},
-    {tag:["Italiano premium","Premium Italian"],name:"Bucatini Ristorante",
+    {tag:["Cocina italiana auténtica","Authentic Italian cuisine"],name:"Bucatini Ristorante",
      r:["Destacar dentro de un food hall con muchas opciones a pocos pasos.","Standing out inside a food hall with many options just steps away."],
      h:["Estrategia de marketing neuroexperiencial, menús digitales que guían la decisión hacia los platos estrella y campañas con fechas emocionales.","Neuroexperiential marketing strategy, digital menus that guide decisions toward signature dishes, and campaigns around emotional dates."],
      c:["La marca dejó de competir solo por precio y ubicación, y empezó a competir por experiencia.","The brand stopped competing only on price and location, and started competing on experience."]},
-    {tag:["Familiar y comunitaria","Family and community"],name:"Millie’s Pizzeria",
-     r:["Convertirse en parte de los momentos familiares de su comunidad, no solo en una opción para comer.","Becoming part of its community’s family moments, not just another place to eat."],
+    {tag:["Pizzería familiar","Family pizzeria"],name:"Millie’s Pizzeria",
+     r:["Convertirse en parte de los momentos familiares de sus clientes, no solo en una opción para comer.","Becoming part of its customers’ family moments, not just another place to eat."],
      h:["Un calendario de campañas con propósito que convierte fechas significativas, como el Día de la Mujer (por mencionar algunas), en razones para volver, con mensajes cortos y cálidos.","A purpose-driven campaign calendar that turns meaningful dates, like International Women’s Day (to name a few), into reasons to come back, with short, warm messages."],
-     c:["Cada fecha se volvió una oportunidad de conectar con la comunidad, no solo de anunciar un descuento.","Every date became a chance to connect with the community, not just to announce a discount."]}
+     c:["Las promociones dejaron de ser solo descuentos y se convirtieron en invitaciones para celebrar en familia.","Promotions stopped being just discounts and became invitations to celebrate as a family."]},
+    {wm:true,tag:["Watermelon · Servicios inmobiliarios","Watermelon · Real estate services"],name:"ECO MIND · Tampa Bay",
+     r:["Comunicar un servicio integral de preparación de inmuebles sin que la empresa se viera como una de mudanzas o de limpieza.","Communicating a full-service property preparation offer without being seen as a moving or cleaning company."],
+     h:["Copy comercial bilingüe y un flyer diseñado para explicar en segundos qué ofrecen, su valor diferencial y cómo contratarlos.","Bilingual sales copy and a flyer designed to explain in seconds what they offer, what sets them apart and how to hire them."],
+     c:["El mensaje presenta a la empresa como lo que realmente es: una solución integral, no un servicio más de limpieza.","The message presents the company as what it really is: an all-in-one solution, not just another cleaning service."]},
+    {wm:true,tag:["Watermelon · Turismo","Watermelon · Hospitality"],name:"ALZ Beach Condo · Isla de Margarita",
+     r:["Que un apartamento vacacional pudiera recibir reservas directas y ofrecer una experiencia cuidada desde antes de la llegada del huésped.","Enabling a vacation rental to take direct bookings and offer a thoughtful experience even before guests arrive."],
+     h:["Un website bilingüe con calendario y tarifas en vivo, galería y reservas directas, además de una guía digital para huéspedes.","A bilingual website with a live calendar and rates, a gallery and direct booking, plus a digital guest guide."],
+     c:["La experiencia del huésped empieza desde la primera visita a la web, no al llegar al apartamento.","The guest experience starts with the first website visit, not on arrival."]}
   ];
-  const APPROACH={tag:["Cómo lo abordaría","How I’d approach it"],name:["Servicios profesionales","Professional services"],
-     r:["Un corredor de seguros independiente que necesita verse confiable frente a grandes aseguradoras.","An independent insurance broker who needs to look trustworthy next to large carriers."],
-     h:["Identidad de marca y sistema de logo que comunican cercanía y solidez, y un mensaje que traduce lo técnico a lo humano.","A brand identity and logo system that convey both warmth and strength, and a message that turns technical language into human language."]};
   const CAPS=[
     {t:["Comunicación bilingüe y multicultural","Bilingual & multicultural communication"],
      i:[["Transcreación cultural inglés–español","English–Spanish cultural transcreation"],["Marketing multicultural para audiencias hispanas en EE. UU.","Multicultural marketing for U.S. Hispanic audiences"],["Comunicación para impacto social y recaudación de fondos","Communication for social impact and fundraising"]]},
@@ -470,15 +480,11 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
     </article>`).join("");
   const step=(lbl,txt,out)=>`<div class="step${out?" out":""}"><b>${lbl}</b><span>${txt}</span></div>`;
   document.getElementById("cases").innerHTML=CASES.map(c=>`
-    <article class="case"><span class="tag">${bi(c.tag[0],c.tag[1])}</span><h3>${esc(c.name)}</h3>
+    <article class="case${c.wm?" wmcase":""}"><span class="tag">${bi(c.tag[0],c.tag[1])}</span><h3>${esc(c.name)}</h3>
       ${step(bi("Reto","Challenge"),bi(c.r[0],c.r[1]))}
-      ${step(bi("Lo que hice","What I did"),bi(c.h[0],c.h[1]))}
+      ${step(c.wm?bi("Lo que hicimos","What we did"):bi("Lo que hice","What I did"),bi(c.h[0],c.h[1]))}
       ${step(bi("Lo que cambió","What changed"),bi(c.c[0],c.c[1]),true)}
-    </article>`).join("")+`
-    <article class="case approach"><span class="tag">${bi(APPROACH.tag[0],APPROACH.tag[1])}</span><h3>${bi(APPROACH.name[0],APPROACH.name[1])}</h3>
-      ${step(bi("Escenario","Scenario"),bi(APPROACH.r[0],APPROACH.r[1]))}
-      ${step(bi("Mi enfoque","My approach"),bi(APPROACH.h[0],APPROACH.h[1]),true)}
-    </article>`;
+    </article>`).join("");
   document.getElementById("caps").innerHTML=CAPS.map(c=>`<div class="cap"><h4>${bi(c.t[0],c.t[1])}</h4><ul>${c.i.map(x=>`<li>${bi(x[0],x[1])}</li>`).join("")}</ul></div>`).join("");
   document.getElementById("method").innerHTML=METHOD.map(m=>`<div class="m"><p class="n">${m[0]}</p><h3>${bi(m[1],m[2])}</h3><p>${bi(m[3],m[4])}</p></div>`).join("");
 
