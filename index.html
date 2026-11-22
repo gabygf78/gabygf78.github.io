@@ -434,7 +434,7 @@ body:has(#briefView.on) .site-foot{padding-bottom:100px}
   /* ---------- GabyOS: cada contacto entra como lead en el CRM ----------
      Llena url y key con lo que aparece en GabyOS → Ajustes → Captura de leads.
      Vacíos: el formulario sigue funcionando solo con WhatsApp. */
-  var GABYOS = { url: "", key: "" };
+  var GABYOS = { url: "https://app.soygabygonzalez.com/api/captura", key: "5b6b9f3913929b75d7955b96e2def157" };
   function sendToGabyOS(lead) {
     if (!GABYOS.url || !GABYOS.key || !window.fetch) return;
     try {

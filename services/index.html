@@ -470,7 +470,7 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
      Llena url y key con lo que aparece en GabyOS → Ajustes → Captura de leads.
      Vacíos: el formulario sigue funcionando solo con WhatsApp. */
   let lastDiag = "";
-  var GABYOS = { url: "", key: "" };
+  var GABYOS = { url: "https://app.soygabygonzalez.com/api/captura", key: "5b6b9f3913929b75d7955b96e2def157" };
   function sendToGabyOS(lead) {
     if (!GABYOS.url || !GABYOS.key || !window.fetch) return;
     try {
