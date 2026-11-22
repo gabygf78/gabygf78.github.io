@@ -392,6 +392,7 @@ body:has(#briefView.on) .site-foot{padding-bottom:100px}
 <!-- ===================== EXCHANGE SHEET ===================== -->
 <dialog id="exchangeDlg" aria-labelledby="exTitle">
   <form class="sheet" id="exForm" novalidate>
+    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="website" id="exWebsite" tabindex="-1" autocomplete="off"></label></div>
     <input type="hidden" name="idioma" id="exLang" value="es">
     <div class="sheet-top">
       <h3 id="exTitle"><span lang="es">Sigamos en contacto.</span><span lang="en">Let’s stay in touch.</span></h3>
@@ -429,6 +430,18 @@ body:has(#briefView.on) .site-foot{padding-bottom:100px}
 <script>
 (function(){
   var PHONE = "14706053878";
+
+  /* ---------- GabyOS: cada contacto entra como lead en el CRM ----------
+     Llena url y key con lo que aparece en GabyOS → Ajustes → Captura de leads.
+     Vacíos: el formulario sigue funcionando solo con WhatsApp. */
+  var GABYOS = { url: "https://app.soygabygonzalez.com/api/captura", key: "5b6b9f3913929b75d7955b96e2def157" };
+  function sendToGabyOS(lead) {
+    if (!GABYOS.url || !GABYOS.key || !window.fetch) return;
+    try {
+      lead.key = GABYOS.key;
+      fetch(GABYOS.url, { method: "POST", mode: "cors", keepalive: true, headers: { "Content-Type": "text/plain" }, body: JSON.stringify(lead) }).catch(function () {});
+    } catch (e) {}
+  }
   var SITE = "https://hola.soygabygonzalez.com/";
   var WA_MSG = {
     es: "Hola Gaby, ¡fue un gusto conocerte! Me gustaría seguir conversando.",
@@ -560,6 +573,7 @@ body:has(#briefView.on) .site-foot{padding-bottom:100px}
     var msg = lang==="es"
       ? "Hola Gaby, soy "+name+(co?" de "+co:"")+"."+(ev?" Nos conocimos en "+ev+".":"")+" Mi contacto: "+ct+". ¡Sigamos conversando!"
       : "Hi Gaby, I’m "+name+(co?" from "+co:"")+"."+(ev?" We met at "+ev+".":"")+" My contact: "+ct+". Let’s keep talking!";
+    sendToGabyOS({ name: name, company: co, contact: ct, met: ev, page: "tarjeta", lang: lang, website: document.getElementById("exWebsite").value });
     window.open("https://wa.me/"+PHONE+"?text="+encodeURIComponent(msg),"_blank");
     closeDlg(exDlg); form.reset();
     toast(lang==="es"?"¡Gracias! Te escribo pronto.":"Thank you! I’ll be in touch soon.");
