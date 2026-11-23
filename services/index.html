@@ -653,6 +653,11 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
   document.querySelectorAll("[data-open-wm]").forEach(b=>b.addEventListener("click",()=>{openDlg(wmDlg);wmDlg.scrollTop=0}));
   const setWm=()=>{document.getElementById("wmWa").href=wa(lang==="es"?"Hola, me interesa conocer los servicios de Watermelon.":"Hi, I’d like to learn more about Watermelon’s services.")};
   setWm(); onLang.push(setWm);
+  /* holawatermelon.com llega con ?ref=watermelon (o #watermelon-panel): abre directo el panel de Watermelon */
+  if(new URLSearchParams(location.search).get("ref")==="watermelon"||location.hash==="#watermelon-panel"){
+    const sec=document.getElementById("watermelon"); if(sec)sec.scrollIntoView();
+    openDlg(wmDlg); wmDlg.scrollTop=0;
+  }
   const toastEl=document.getElementById("toast"); let tt;
   const toast=m=>{toastEl.textContent=m;toastEl.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove("on"),2600)};
   document.getElementById("copyBtn").addEventListener("click",()=>{
