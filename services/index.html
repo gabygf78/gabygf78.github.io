@@ -214,6 +214,17 @@ h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.15;lett
 @media(min-width:520px){.wm-cta{grid-template-columns:1fr 1fr}}
 .wm-cta .btn{justify-content:center;gap:10px}
 .wm-wa{background:#158C67;color:#fff}
+.wm-form{margin-top:22px;border:1.5px solid var(--line);border-top:4px solid #158C67;border-radius:18px;padding:18px 16px 14px}
+.wm-form h4{font-size:19px;letter-spacing:-.01em;margin:0 0 4px}
+.wm-form .sub{font-size:14.5px;margin:0 0 14px}
+.wm-form select,.wm-form textarea{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--ink)}
+.wm-form textarea{min-height:92px;resize:vertical}
+.wm-form select:focus,.wm-form textarea:focus,.wm-form input:focus{outline:none;border-color:#158C67;box-shadow:0 0 0 4px rgba(21,140,103,.14)}
+.wm-form .btn{width:100%;justify-content:center;gap:10px}
+.wm-done{display:none;text-align:center;padding:8px 4px 4px}
+.wm-done b{display:block;font-size:19px;margin-bottom:4px}
+.wm-done p{color:var(--muted);font-size:14.5px;margin:0}
+.wm-form.sent form{display:none}.wm-form.sent .wm-done{display:block}
 .wm-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .wm-chips span{font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;border:1.5px solid rgba(255,255,255,.55);color:#fff}
 .converge{margin-top:18px;font-family:var(--serif);font-size:clamp(20px,4.6vw,24px);line-height:1.3;text-align:center;max-width:46ch;margin-left:auto;margin-right:auto}
@@ -437,6 +448,34 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
     </div>
     <p class="wm-sec"><span lang="es">Proyectos</span><span lang="en">Projects</span></p>
     <div class="cases one" id="wmCases"></div>
+    <div class="wm-form" id="wmBox">
+      <form id="wmForm" novalidate>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="website" id="wmWebsite" tabindex="-1" autocomplete="off"></label></div>
+        <h4><span lang="es">Cuéntanos tu proyecto</span><span lang="en">Tell us about your project</span></h4>
+        <p class="sub"><span lang="es">Te respondemos en un máximo de 2 días hábiles.</span><span lang="en">We reply within 2 business days.</span></p>
+        <label class="field"><span><span lang="es">Nombre</span><span lang="en">Name</span> *</span><input id="wmName" autocomplete="name"></label>
+        <label class="field"><span><span lang="es">WhatsApp o email</span><span lang="en">WhatsApp or email</span> *</span><input id="wmContact" inputmode="email" autocomplete="email"></label>
+        <label class="field"><span><span lang="es">Empresa o proyecto</span><span lang="en">Company or project</span> <small><span lang="es">(opcional)</span><span lang="en">(optional)</span></small></span><input id="wmCo" autocomplete="organization"></label>
+        <label class="field"><span><span lang="es">¿Qué necesitas?</span><span lang="en">What do you need?</span></span>
+          <select id="wmNeed">
+            <option value="Sitio web" data-es="Sitio web" data-en="Website">Sitio web</option>
+            <option value="Branding" data-es="Branding" data-en="Branding">Branding</option>
+            <option value="Identidad visual" data-es="Identidad visual" data-en="Visual identity">Identidad visual</option>
+            <option value="Piezas gráficas" data-es="Piezas gráficas" data-en="Graphic pieces">Piezas gráficas</option>
+            <option value="Contenido y campañas" data-es="Contenido y campañas" data-en="Content and campaigns">Contenido y campañas</option>
+            <option value="Aún no lo sé" data-es="Aún no lo sé" data-en="I'm not sure yet">Aún no lo sé</option>
+          </select>
+        </label>
+        <label class="field"><span><span lang="es">Mensaje</span><span lang="en">Message</span> <small><span lang="es">(opcional)</span><span lang="en">(optional)</span></small></span><textarea id="wmMsg" data-ph-es="Qué quieres lograr, para cuándo y cualquier detalle útil" data-ph-en="What you want to achieve, by when, and any useful detail"></textarea></label>
+        <p class="err" id="wmErr" role="alert"></p>
+        <button class="btn wm-wa" type="submit" id="wmSend"><span lang="es">Enviar</span><span lang="en">Send</span><svg class="i"><use href="#i-up-right"/></svg></button>
+        <p class="fine"><span lang="es">Solo usamos tus datos para responderte. Lee la <a href="../privacy/">política de privacidad</a>.</span><span lang="en">We only use your details to reply to you. Read the <a href="../privacy/">privacy policy</a>.</span></p>
+      </form>
+      <div class="wm-done" role="status" aria-live="polite">
+        <b><span lang="es">¡Recibido!</span><span lang="en">Got it!</span></b>
+        <p><span lang="es">Gracias por escribirnos. Te contactamos muy pronto.</span><span lang="en">Thanks for reaching out. We’ll be in touch very soon.</span></p>
+      </div>
+    </div>
     <div class="wm-cta">
       <a class="btn wm-wa" id="wmWa" target="_blank" rel="noopener">WhatsApp<svg class="i"><use href="#i-up-right"/></svg></a>
       <a class="btn btn-ghost" href="https://www.instagram.com/hola_watermelon/" target="_blank" rel="noopener">@hola_watermelon<svg class="i"><use href="#i-up-right"/></svg></a>
@@ -653,6 +692,27 @@ dialog::backdrop{background:rgba(23,21,28,.55);backdrop-filter:blur(3px)}
   document.querySelectorAll("[data-open-wm]").forEach(b=>b.addEventListener("click",()=>{openDlg(wmDlg);wmDlg.scrollTop=0}));
   const setWm=()=>{document.getElementById("wmWa").href=wa(lang==="es"?"Hola, me interesa conocer los servicios de Watermelon.":"Hi, I’d like to learn more about Watermelon’s services.")};
   setWm(); onLang.push(setWm);
+  const setWmLang=()=>document.querySelectorAll("#wmNeed option").forEach(o=>{o.textContent=o.dataset[lang]||o.value});
+  setWmLang(); onLang.push(setWmLang);
+  document.getElementById("wmForm").addEventListener("submit",async e=>{
+    e.preventDefault();
+    const v=id=>document.getElementById(id).value.trim(), err=document.getElementById("wmErr"), btn=document.getElementById("wmSend");
+    const name=v("wmName"), ct=v("wmContact");
+    if(!name||ct.length<3){err.textContent=lang==="es"?"Escribe tu nombre y un WhatsApp o email.":"Please add your name and a WhatsApp or email.";return}
+    err.textContent=""; btn.disabled=true;
+    const fallback=lang==="es"?"No pudimos enviarlo. Escríbenos por WhatsApp o a contact@holawatermelon.com.":"We couldn’t send it. Message us on WhatsApp or at contact@holawatermelon.com.";
+    try{
+      const res=await fetch(GABYOS.url,{method:"POST",mode:"cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify({key:GABYOS.key,name:name,contact:ct,company:v("wmCo"),interest:v("wmNeed"),note:v("wmMsg"),page:"watermelon",lang:lang,website:v("wmWebsite")})});
+      if(res.ok){document.getElementById("wmBox").classList.add("sent");return}
+      err.textContent=res.status===429?(lang==="es"?"Recibimos varios mensajes seguidos. Intenta en un rato o escríbenos por WhatsApp.":"We got several messages in a row. Try again later or message us on WhatsApp."):fallback;
+    }catch(x){err.textContent=fallback}
+    btn.disabled=false;
+  });
+  /* holawatermelon.com llega con ?ref=watermelon (o #watermelon-panel): abre directo el panel de Watermelon */
+  if(new URLSearchParams(location.search).get("ref")==="watermelon"||location.hash==="#watermelon-panel"){
+    const sec=document.getElementById("watermelon"); if(sec)sec.scrollIntoView();
+    openDlg(wmDlg); wmDlg.scrollTop=0;
+  }
   const toastEl=document.getElementById("toast"); let tt;
   const toast=m=>{toastEl.textContent=m;toastEl.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove("on"),2600)};
   document.getElementById("copyBtn").addEventListener("click",()=>{
